@@ -1,16 +1,25 @@
-import React from 'react';
-import Button from "@material-ui/core/Button";
+import Button from '@material-ui/core/Button'
 
-import ListComp from './components/listComp.js';
-import PopUp from './components/popUP.js';
-import Play from './components/play.js';
+import Board from './components/Board.js'
+import HomePage from './components/HomePage.js'
+import React, { Component } from 'react'
+import { BrowserRouter, Route, Switch, Link } from 'react-router-dom'
+import { withRouter } from 'react-router'
+import { browserHistory } from 'react-router'
 
-function App() {
-  return (
-    <Button variant="contained" color="primary">
-      Hello World
-    </Button>
-  );
+class App extends Component {
+  render () {
+    return (
+      <BrowserRouter>
+        <div>
+          <Switch>
+            <Route exact path='/' component={HomePage} />
+            <Route exact path='/Board' render={(props) => <Board {...props} someFunction={this.someFunction} />} />
+          </Switch>
+        </div>
+      </BrowserRouter>
+    )
+  }
 }
 
-export default App;
+export default App
