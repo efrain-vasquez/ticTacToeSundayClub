@@ -1,6 +1,6 @@
 import React from 'react'
 import Header from './Header.js'
-import './styles.css'
+import '../App.css'
 
 class Board extends React.Component {
   constructor (props) {
@@ -12,24 +12,24 @@ class Board extends React.Component {
       counterO: 0,
       counterX: 0,
       isAllSquareClicked: function (squares) {
-      	let count = 0
-      	squares.forEach(function (item) {
-      		if (item !== null) {
-      			count++
-      		}
-      	})
-      	if (count === 9) {
-      		return true
-      	} else {
-      		return false
-      	}
+        let count = 0
+        squares.forEach(function (item) {
+          if (item !== null) {
+            count++
+          }
+        })
+        if (count === 9) {
+          return true
+        } else {
+          return false
+        }
       },
       square: function (props) {
-      	return (
+        return (
           <button className='square' onClick={props.onClick}>
           {props.value}
         </button>
-      	)
+        )
       },
       findWinner: function (squares) {
         const lines = [
@@ -76,8 +76,8 @@ class Board extends React.Component {
       xIsNext: !this.state.xIsNext
     })
   }
-  resetSquares() {
-    this.setState({squares: Array(9).fill(null)})
+  resetSquares () {
+    this.setState({ squares: Array(9).fill(null) })
   }
 
   render () {
@@ -87,7 +87,7 @@ class Board extends React.Component {
     if (winner) {
       (winner === 'X' ? this.state.counterX++ : this.state.counterO++)
       status = 'Winner: ' + winner
-      this.resetSquares();
+      this.resetSquares()
     } else if (!winner && isFilled) {
       status = 'Game drawn'
       this.resetSquares()

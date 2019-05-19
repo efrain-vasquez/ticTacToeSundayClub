@@ -1,5 +1,7 @@
 import Button from '@material-ui/core/Button'
-
+import PropTypes from 'prop-types'
+import { withStyles } from '@material-ui/core/styles'
+import Fab from '@material-ui/core/Fab'
 import Board from './components/Board.js'
 import HomePage from './components/HomePage.js'
 import React, { Component } from 'react'
