@@ -76,6 +76,9 @@ class Board extends React.Component {
       xIsNext: !this.state.xIsNext
     })
   }
+  resetSquares() {
+    this.setState({squares: Array(9).fill(null)})
+  }
 
   render () {
     const winner = this.state.findWinner(this.state.squares)
@@ -84,8 +87,10 @@ class Board extends React.Component {
     if (winner) {
       (winner === 'X' ? this.state.counterX++ : this.state.counterO++)
       status = 'Winner: ' + winner
+      this.resetSquares();
     } else if (!winner && isFilled) {
       status = 'Game drawn'
+      this.resetSquares()
     } else {
       status = 'Now ' + (this.state.xIsNext ? 'X' : 'O') + '\'s turn'
     }
