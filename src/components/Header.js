@@ -1,13 +1,44 @@
-import React, { Component } from 'react'
+
+import React from 'react'
+import PropTypes from 'prop-types'
+import { withStyles } from '@material-ui/core/styles'
+import Button from '@material-ui/core/Button'
 import { Link } from 'react-router-dom'
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
+import Typography from '@material-ui/core/Typography'
 
-const Header = () => (
-  <div>
+const styles = theme => ({
+  button: {
+    margin: theme.spacing.unit
+  },
+  input: {
+    display: 'none'
+  }
+})
+
+function Header (props) {
+  const { classes } = props
+  return (
     <div>
-      <h1>Welcome to Tic-Tac-Code</h1>
-      <button className='button is-text'><Link to='/Board'>Play</Link></button>
+      <div className={classes.root}>
+        <AppBar position='relative' color='default'>
+          <Toolbar>
+            <Typography variant='h6' color='inherit'>
+            Welcome to Tic-Tac-Code
+            </Typography>
+          </Toolbar>
+        </AppBar>
+      </div>
+      <Button variant='contained' className={classes.button}>
+        <Link to='/Board'>Play</Link>
+      </Button>
     </div>
-  </div>
-)
+  )
+}
 
-export default Header
+Header.propTypes = {
+  classes: PropTypes.object.isRequired
+}
+
+export default withStyles(styles)(Header)
