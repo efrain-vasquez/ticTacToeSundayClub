@@ -17,12 +17,16 @@ const styles = theme => ({
   }
 })
 
+const styleCenter = {
+  'align': 'center'
+}
+
 function Header (props) {
   const { classes } = props
   return (
     <div>
       <div className={classes.root}>
-        <AppBar position='relative' color='default'>
+        <AppBar position='static' color='default'>
           <Toolbar>
             <Typography variant='h6' color='inherit'>
             Welcome to Tic-Tac-Code
